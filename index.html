@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>跳转页面返回问题解决</title>
+</head>
+<body onload="if (window.performance.navigation.type === 2) { window.stop(); window.history.back(); }">
+<script>
+// 获取语言
+function getLanguage() {
+  return navigator.systemLanguage || navigator.language;
+}
+
+// 判断语言并跳转
+function jumpToLanguage() {
+  var language = getLanguage();
+  if (language.startsWith("zh-")) {
+    // 简体中文
+    window.location.href = "https://tawk.to/chat/65f925431ec1082f04d8d58b/1hpamig8h";
+  } else if (language.startsWith("zh-TW") || language.startsWith("zh-HK")) {
+    // 繁体中文
+    window.location.href = "https://tawk.to/chat/65f925431ec1082f04d8d58b/1hpakqk8r";
+  } else {
+    // 其他语言
+    window.location.href = "https://tawk.to/chat/65f925431ec1082f04d8d58b/1hpan2c0d";
+  }
+}
+
+// 判断是否是从后退按钮返回
+if (window.performance.navigation.type === 2) {
+  // 从后退按钮返回
+  // 阻止页面继续加载
+  window.stop();
+  // 自动返回上一层页面
+  window.history.back();
+} else {
+  // 首次加载页面
+  // 执行跳转逻辑
+  jumpToLanguage();
+}
+</script>
+</body>
+</html>
